@@ -71,12 +71,12 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
-      const newCart = { ...cart };
-
-      const productIndex = newCart.findIndex(product => product.id === productId);
+      const productIndex = cart.findIndex(product => product.id === productId);
 
       if (productIndex !== -1) {
-        newCart.splice(productIndex, 1);
+        const newCart = cart.filter(product => product.id !== productId);
+
+        console.log(newCart);
 
         setCart(newCart);
 
